@@ -1,0 +1,21 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+               docker build -t localhost:5000/test_container .
+            }
+        }
+        stage('push image') {
+            steps {
+                docker push localhost:5000/test_container
+            }
+        }
+        stage('Check') {
+            steps {
+                echo 'Hooray!'
+            }
+        }
+    }
+}

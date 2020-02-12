@@ -1,0 +1,25 @@
+version: '2'
+
+services:
+  webapp:
+    image: jenkins
+    restart: always
+    network_mode: "host"
+    logging:
+      driver: json-file
+    environment:
+      JAVA_OPTS: |-
+        -XX:+ParallelRefProcEnabled
+        -XX:+ExplicitGCInvokesConcurrent
+        -XX:MaxMetaspaceExpansion=64M
+        -XX:MaxMetaspaceExpansion=16M
+    volumes:
+      - ${PWD}/jenkins-data:/var/jenkins_home
+    #entrypoint: ["echo", "hi"]
+
+  registry: 
+    image: registry
+    restart: always
+    network_mode: "host"
+    logging:
+      driver: json-file
