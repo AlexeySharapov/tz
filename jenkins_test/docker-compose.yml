@@ -15,7 +15,6 @@ services:
         -XX:MaxMetaspaceExpansion=16M
     volumes:
       - ${PWD}/jenkins-data:/var/jenkins_home
-    #entrypoint: ["echo", "hi"]
 
   registry: 
     image: registry

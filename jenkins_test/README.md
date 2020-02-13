@@ -1,7 +1,5 @@
 ###  HOW TO
 
-
-
  1. docker-compose up -d in directory with docker compose. Registry will be available via localhost:5000, Jenkins localhost:8080
  2. relish
 
@@ -10,6 +8,9 @@
 sh install.sh
 
 
+# Download seed job repo
+
+sh dwnld.sh
 
 # Create seed-job
 
