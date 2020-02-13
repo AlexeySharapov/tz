@@ -1,0 +1,34 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Clone repository') {
+    	  checkout([$class: 'GitSCM', branches: [[name: '*/master']],
+    	  doGenerateSubmoduleConfigurations: false, extensions: [],
+    	  submoduleCfg: [], userRemoteConfigs:
+    	  [[credentialsId: 'creds_github',
+    	  url: 'https://github.com/AlexeySharapov/tz.git']]])
+	}
+        stage('Build') {
+            steps {
+               sh '''
+               docker build -t localhost:5000/test_container .
+               '''
+            }
+        }
+        stage('push image') {
+            steps { 
+                sh '''
+                docker push localhost:5000/test_container
+                '''
+            }
+        }
+        stage('Check') {
+            steps {
+                sh '''
+                echo 'Hooray!'
+                '''
+            }
+        }
+    }
+}
