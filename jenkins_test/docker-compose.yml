@@ -14,7 +14,7 @@ services:
         -XX:MaxMetaspaceExpansion=64M
         -XX:MaxMetaspaceExpansion=16M
     volumes:
-      - ${PWD}/jenkins-data:/var/jenkins_home
+      - /opt/jenkins-data:/var/jenkins_home
 
   registry: 
     image: registry
