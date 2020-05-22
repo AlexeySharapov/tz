@@ -6,7 +6,8 @@ ADD buildroot /opt/
 
 RUN cd /opt && make  raspberrypi3_defconfig
 
-RUN mkdir /opt/1 && wget  https://old.mediaarea.net/download/source/libmediainfo/19.09/libmediainfo_19.09.tar.gz -P /opt/1 && cd /opt/1 && tar -xf libmediainfo_19.09.tar.gz && rm libmediainfo_19.09.tar.gz
+WORKDIR mkdir /opt/1 
+RUN wget  https://old.mediaarea.net/download/source/libmediainfo/19.09/libmediainfo_19.09.tar.gz -P /opt/1 && cd /opt/1 && tar -xf libmediainfo_19.09.tar.gz && rm libmediainfo_19.09.tar.gz
 
 #RUN wget https://mediaarea.net/download/binary/libmediainfo0/19.09/libmediainfo0v5_19.09-1_amd64.xUbuntu_18.04.deb -P /opt && \
 #wget https://mediaarea.net/download/binary/libmediainfo0/19.09/libmediainfo-dev_19.09-1_amd64.xUbuntu_18.04.deb -P /opt && \
